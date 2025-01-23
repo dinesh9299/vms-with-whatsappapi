@@ -25,7 +25,7 @@ const Editemployee = ({ handleClose, Getemployee, query, updated }) => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8090/api/getempbyid/${query}`
+          `http://192.168.1.27:8090/api/getempbyid/${query}`
         );
         // Extracting employee data from the response
         const employeeData = response.data?.data?.[0];
@@ -45,8 +45,6 @@ const Editemployee = ({ handleClose, Getemployee, query, updated }) => {
         } else {
           console.error("No employee data found.");
         }
-
-        console.log("data", employeeData);
       } catch (error) {
         console.error("Error fetching employee:", error);
       }
@@ -162,7 +160,7 @@ const Editemployee = ({ handleClose, Getemployee, query, updated }) => {
       setSaveloader(true);
       try {
         const response = await axios.put(
-          `http://127.0.0.1:8090/api/editemployee/${query}`,
+          `http://192.168.1.27:8090/api/editemployee/${query}`,
           formData
         );
 
@@ -187,7 +185,7 @@ const Editemployee = ({ handleClose, Getemployee, query, updated }) => {
             Getemployee();
             handleClose();
             await axios.put(
-              `http://127.0.0.1:8090/api/edituser/${query}`,
+              `http://192.168.1.27:8090/api/edituser/${query}`,
               formData
             );
 

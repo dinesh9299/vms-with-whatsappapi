@@ -48,9 +48,12 @@ const Allvisitorspage = ({ getload }) => {
 
     // Fetch user data
     const GetUser = async () => {
-      const response = await axios.post("http://127.0.0.1:8090/api/getuser", {
-        token: cookies.token,
-      });
+      const response = await axios.post(
+        "http://192.168.1.27:8090/api/getuser",
+        {
+          token: cookies.token,
+        }
+      );
       const getuserData = response.data;
       if (getuserData.data.message === "Invalid token") {
         alert("Invalid token");
@@ -64,7 +67,7 @@ const Allvisitorspage = ({ getload }) => {
   const getvisitors = async () => {
     setLoading(true); // Set loading state to true when starting the fetch
     await axios
-      .get("http://127.0.0.1:8090/api/getvisitors")
+      .get("http://192.168.1.27:8090/api/getvisitors")
       .then((response) => {
         setVisitors(response.data);
         setLoading(false); // Set loading state to false when data is fetched

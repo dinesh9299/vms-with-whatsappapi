@@ -251,7 +251,9 @@ const AddVisitorPage = ({
   // Fetch employees from API
   const GetEmployees = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8090/api/employees");
+      const response = await axios.get(
+        "http://192.168.1.27:8090/api/employees"
+      );
       setEmployees(response.data); // Assuming response.data is an array of employees
     } catch (error) {
       console.error("Error fetching employees:", error);
@@ -307,7 +309,7 @@ const AddVisitorPage = ({
     if (valid) {
       setSaveloader(true);
       const response = await axios.post(
-        "http://127.0.0.1:8090/api/addvisitor",
+        "http://192.168.1.27:8090/api/addvisitor",
         formData
       );
 
@@ -336,15 +338,14 @@ const AddVisitorPage = ({
         }
 
         const getempnumber = await axios.post(
-          "http://127.0.0.1:8090/api/searchemployee",
+          "http://192.168.1.27:8090/api/searchemployee",
           { query: formData.visitingperson }
         );
 
-        alert(getempnumber.data[0].mobile);
         const emp = getempnumber.data[0];
         if (getempnumber.data[0].mobile) {
           await axios.post(
-            "http://127.0.0.1:8090/api/whatsappempnot",
+            "http://192.168.1.27:8090/api/whatsappempnot",
             {
               empname: emp.name,
               visitor: formData.name,

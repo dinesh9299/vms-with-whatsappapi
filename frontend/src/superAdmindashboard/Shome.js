@@ -40,8 +40,6 @@ const Shome = () => {
 
   const [reloadVisitors, setReloadVisitors] = useState(false);
 
-  console.log("user", user);
-
   const handleUserAdded = () => {
     setReloadVisitors((prev) => !prev); // Toggle to trigger refresh
   };
@@ -75,9 +73,12 @@ const Shome = () => {
 
     // Fetch user data using token
     const GetUser = async () => {
-      const response = await axios.post("http://127.0.0.1:8090/api/getuser", {
-        token: cookies.token,
-      });
+      const response = await axios.post(
+        "http://192.168.1.27:8090/api/getuser",
+        {
+          token: cookies.token,
+        }
+      );
 
       const getuserData = response.data;
 
@@ -87,7 +88,6 @@ const Shome = () => {
       }
 
       dispatch(setUser(getuserData.data));
-      console.log("userdata", getuserData);
     };
 
     GetUser();
@@ -96,7 +96,7 @@ const Shome = () => {
   const getvisitors = async () => {
     setLoading(true);
     await axios
-      .get("http://127.0.0.1:8090/api/getvisitors")
+      .get("http://192.168.1.27:8090/api/getvisitors")
       .then((response) => {
         setVisitors(response.data);
         setLoading(false);
@@ -171,7 +171,7 @@ const Shome = () => {
 
   // Check-in and check-out buttons
   const handleCheckin = async (value) => {
-    await axios.put(`http://127.0.0.1:8090/api/chekin/${value}`);
+    await axios.put(`http://192.168.1.27:8090/api/chekin/${value}`);
     messageApi.open({
       type: "success",
       content: "visitor checked in successfully",
@@ -182,7 +182,7 @@ const Shome = () => {
   };
 
   const handleCheckout = async (value) => {
-    await axios.put(`http://127.0.0.1:8090/api/checkout/${value}`);
+    await axios.put(`http://192.168.1.27:8090/api/checkout/${value}`);
     messageApi.open({
       type: "success",
       content: "visitor checked out successfully",
@@ -229,7 +229,7 @@ const Shome = () => {
   const handleOk = async () => {
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:8090/api/deletevisitor/${editid}`
+        `http://192.168.1.27:8090/api/deletevisitor/${editid}`
       );
 
       const responseData = response.data;

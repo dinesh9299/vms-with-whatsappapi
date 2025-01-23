@@ -56,14 +56,14 @@ const Semployees = () => {
       type: "success",
       content: "Employee Deleted Successfully",
     });
-  };  
+  };
 
   // Fetch all employees from the backend
   const GetEmployees = async () => {
     setLoading(true);
     try {
       await axios
-        .get("http://127.0.0.1:8090/api/employees")
+        .get("http://192.168.1.27:8090/api/employees")
         .then((response) => {
           setEmployees(response.data);
           setLoading(false);
@@ -73,7 +73,7 @@ const Semployees = () => {
     }
   };
 
-  console.log("employees", employees);
+  // console.log("employees", employees);
 
   // Handle search query change
   const handleQuerychange = async (value) => {
@@ -85,13 +85,13 @@ const Semployees = () => {
     } else {
       // If there is a search query, fetch filtered employees based on query
       const response = await axios.post(
-        "http://127.0.0.1:8090/api/searchemployee",
+        "http://192.168.1.27:8090/api/searchemployee",
         {
           query: value,
         }
       );
 
-      console.log("employee", response.data);
+      // console.log("employee", response.data);
 
       setEmployees(response.data); // Update employees with search results
     }

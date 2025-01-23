@@ -13,6 +13,7 @@ import Addvisitorpage from "../pages/Addvisitorpage";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
 import MemberIcon from "@rsuite/icons/Member";
 import PlusRoundIcon from "@rsuite/icons/PlusRound";
+import axios from "axios";
 
 const Header = ({ Getvisitors, getload }) => {
   const dispatch = useDispatch();
@@ -21,8 +22,6 @@ const Header = ({ Getvisitors, getload }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation(); // Get the current route location
   const user = useSelector((state) => state.user);
-
-  console.log("userdfghj", user);
 
   const profileRef = useRef(null); // Ref for profile icon and dropdown
   const dropdownRef = useRef(null); // Ref for the dropdown menu
@@ -38,6 +37,50 @@ const Header = ({ Getvisitors, getload }) => {
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);
   };
+
+  if (user.role === "super Admin") {
+    navigate("/superadmindashboard");
+  } else if (user.role === "Admin") {
+    navigate("/admindashboard");
+  } else {
+    navigate("/");
+  }
+
+  // useEffect(() => {
+  //   // If no token, redirect to signin
+  //   if (!cookies.token) {
+  //     navigate("/signin");
+  //     return; // Early return if token doesn't exist
+  //   }
+
+  //   // Fetch user data using token
+  //   const GetUser = async () => {
+  //     const response = await axios.post("http://127.0.0.1:8090/api/getuser", {
+  //       token: cookies.token,
+  //     });
+
+  //     const getuserData = response.data;
+
+  //     if (getuserData.data.message === "Invalid token") {
+  //       alert("Invalid token");
+  //       navigate("/signin");
+  //     }
+
+  //     if (getuserData.data.role === "super Admin") {
+  //       navigate("/superadmindashboard");
+  //     }
+  //     if (getuserData.data.role === "Admin") {
+  //       navigate("/admindashboard");
+  //     } else {
+  //       navigate("/");
+  //     }
+
+  //     dispatch(setUser(getuserData.data));
+  //     console.log("userdata", getuserData.data.role);
+  //   };
+
+  //   GetUser();
+  // }, [cookies.token, navigate, dispatch]);
 
   const handleLogout = () => {
     removieCookie("token");

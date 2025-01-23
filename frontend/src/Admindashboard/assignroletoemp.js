@@ -26,7 +26,7 @@ const AssignRoleToEmp = ({ handleClose, GetEmployee, query, updated }) => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8090/api/getempbyid/${query}`
+          `http://192.168.1.27:8090/api/getempbyid/${query}`
         );
         const employeeData = response.data?.data?.[0];
         if (employeeData) {
@@ -38,7 +38,7 @@ const AssignRoleToEmp = ({ handleClose, GetEmployee, query, updated }) => {
             empid: employeeData.empid || "",
             position: employeeData.position || "",
             role: "",
-            password: "", 
+            password: "",
             primaryid: employeeData._id || "",
           });
         } else {
@@ -120,7 +120,7 @@ const AssignRoleToEmp = ({ handleClose, GetEmployee, query, updated }) => {
       setSaveloader(true);
       try {
         const response = await axios.post(
-          `http://127.0.0.1:8090/api/register`,
+          `http://192.168.1.27:8090/api/register`,
           formData
         );
         if (response.data?.success) {

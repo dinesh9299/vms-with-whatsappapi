@@ -91,7 +91,7 @@ function Adminemployeedetails() {
   const GEtemployee = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8090/api/getempbyid/${query}`
+        `http://192.168.1.27:8090/api/getempbyid/${query}`
       );
       const employeeData = response.data.data;
       setEmployee(employeeData);
@@ -110,7 +110,7 @@ function Adminemployeedetails() {
   //get user by primary id
   const getuserbyid = async () => {
     const response = await axios.get(
-      `http://127.0.0.1:8090/api/getuserbyprimary/${query}`
+      `http://192.168.1.27:8090/api/getuserbyprimary/${query}`
     );
 
     if (response.data?.success) {
@@ -125,7 +125,7 @@ function Adminemployeedetails() {
     try {
       if (empname) {
         const response = await axios.get(
-          `http://127.0.0.1:8090/api/getvisitorbyname/${empname}`
+          `http://192.168.1.27:8090/api/getvisitorbyname/${empname}`
         );
         setVisitors(response.data.data); // Set visitors data
       }
@@ -184,14 +184,16 @@ function Adminemployeedetails() {
 
   const handleDeleteok = async () => {
     const response = await axios.delete(
-      `http://127.0.0.1:8090/api/deleteemployeebyid/${query}`
+      `http://192.168.1.27:8090/api/deleteemployeebyid/${query}`
     );
 
     if (response.data.success) {
       alert("employee deleted");
       navigate("/adminemployees", { state: { refresh: true } });
       handledeletemodalclose();
-      await axios.get(`http://127.0.0.1:8090/api/deleteuserbyprimary/${query}`);
+      await axios.get(
+        `http://192.168.1.27:8090/api/deleteuserbyprimary/${query}`
+      );
     }
   };
 

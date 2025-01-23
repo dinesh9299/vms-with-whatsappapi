@@ -45,7 +45,7 @@ const Addemployee = ({ handleClose, Getemployees, updated }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
-    console.log("file", file);
+    // console.log("file", file);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -162,7 +162,7 @@ const Addemployee = ({ handleClose, Getemployees, updated }) => {
       setSaveloader(true);
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8090/api/regemployee",
+          "http://192.168.1.27:8090/api/regemployee",
           formData
         );
         const responseData = response.data;

@@ -37,9 +37,12 @@ const Adminusers = () => {
 
     // Fetch user data using token
     const GetUser = async () => {
-      const response = await axios.post("http://127.0.0.1:8090/api/getuser", {
-        token: cookies.token,
-      });
+      const response = await axios.post(
+        "http://192.168.1.27:8090/api/getuser",
+        {
+          token: cookies.token,
+        }
+      );
 
       const getuserData = response.data;
 
@@ -53,7 +56,6 @@ const Adminusers = () => {
 
     GetUser();
   }, [cookies.token, navigate, dispatch]);
-  console.log("userfdghj", user);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -81,16 +83,16 @@ const Adminusers = () => {
   const GetEmployees = async () => {
     setLoading(true);
     try {
-      await axios.get("http://127.0.0.1:8090/api/getusers").then((response) => {
-        setEmployees(response.data.data);
-        setLoading(false);
-      });
+      await axios
+        .get("http://192.168.1.27:8090/api/getusers")
+        .then((response) => {
+          setEmployees(response.data.data);
+          setLoading(false);
+        });
     } catch (error) {
       console.error("Error fetching employees:", error);
     }
   };
-
-  console.log("employees", user);
 
   // Handle search query change
   const handleQuerychange = async (value) => {
@@ -102,7 +104,7 @@ const Adminusers = () => {
     } else {
       // If there is a search query, fetch filtered employees based on query
       const response = await axios.post(
-        "http://127.0.0.1:8090/api/getuserbyname",
+        "http://192.168.1.27:8090/api/getuserbyname",
         {
           query: value,
         }
@@ -152,7 +154,7 @@ const Adminusers = () => {
 
   const handleUSerdelete = async () => {
     const response = await axios.delete(
-      `http://127.0.0.1:8090/api/deleteuserbyid/${userid}`
+      `http://192.168.1.27:8090/api/deleteuserbyid/${userid}`
     );
     if (response.data.success) {
       messageApi.open({

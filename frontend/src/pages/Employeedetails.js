@@ -19,7 +19,7 @@ function Employeedetails() {
   const GEtemployee = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8090/api/getempbyid/${query}`
+        `http://192.168.1.27:8090/api/getempbyid/${query}`
       );
       const employeeData = response.data.data;
       setEmployee(employeeData);
@@ -40,7 +40,7 @@ function Employeedetails() {
     try {
       if (empname) {
         const response = await axios.get(
-          `http://127.0.0.1:8090/api/getvisitorbyname/${empname}`
+          `http://192.168.1.27:8090/api/getvisitorbyname/${empname}`
         );
         setVisitors(response.data.data); // Set visitors data
       }

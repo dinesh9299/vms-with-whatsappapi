@@ -7,13 +7,11 @@ const Userdetailsmodel = ({ id }) => {
 
   const getUSerbyid = async () => {
     const response = await axios.get(
-      `http://127.0.0.1:8090/api/getuserbyprimary/${id}`
+      `http://192.168.1.27:8090/api/getuserbyprimary/${id}`
     );
 
     setUser(response.data.data);
   };
-
-  console.log("user", user);
 
   useEffect(() => {
     getUSerbyid();

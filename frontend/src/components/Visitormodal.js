@@ -6,7 +6,7 @@ const Visitormodal = ({ id }) => {
 
   const Getvisitor = async () => {
     await axios
-      .get(`http://127.0.0.1:8090/api/getvisitorbyid/${id}`)
+      .get(`http://192.168.1.27:8090/api/getvisitorbyid/${id}`)
       .then((response) => {
         setVisitor(response.data);
       });
@@ -15,8 +15,6 @@ const Visitormodal = ({ id }) => {
   useEffect(() => {
     Getvisitor();
   }, []);
-
-  console.log("user", visitor);
 
   return (
     <div>

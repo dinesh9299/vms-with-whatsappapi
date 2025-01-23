@@ -81,7 +81,7 @@ const Signin = () => {
 
     try {
       // Make a POST request to login
-      const response = await axios.post("http://127.0.0.1:8090/api/login", {
+      const response = await axios.post("http://192.168.1.27:8090/api/login", {
         email: email,
         password: password,
       });
@@ -89,7 +89,7 @@ const Signin = () => {
       const responseData = response.data;
 
       if (responseData.success) {
-        console.log("Login Successful", response.data);
+        // console.log("Login Successful", response.data);
 
         dispatch(setUser(response?.data?.user));
 
@@ -99,7 +99,7 @@ const Signin = () => {
           expires: new Date(Date.now() + 86400000),
         });
 
-        console.log("role", responseData.user.role);
+        // console.log("role", responseData.user.role);
         if (responseData.user.role === "super Admin") {
           navigate("/superadmindashboard");
         } else if (responseData.user.role === "Admin") {

@@ -38,7 +38,7 @@ const Editvisitor = ({
   const Getvisitorbyid = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8090/api/getvisitorbyid/${editid}`
+        `http://192.168.1.27:8090/api/getvisitorbyid/${editid}`
       );
 
       const data = Array.isArray(response.data)
@@ -65,7 +65,9 @@ const Editvisitor = ({
   const GetEmployees = async () => {
     setLoading(true); // Set loading to true before fetching
     try {
-      const response = await axios.get("http://127.0.0.1:8090/api/employees");
+      const response = await axios.get(
+        "http://192.168.1.27:8090/api/employees"
+      );
       setEmployees(response.data);
     } catch (error) {
       console.error("Error fetching employee data:", error);
@@ -146,7 +148,7 @@ const Editvisitor = ({
 
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8090/api/updatevisitor/${editid}`,
+        `http://192.168.1.27:8090/api/updatevisitor/${editid}`,
         formData
       );
 

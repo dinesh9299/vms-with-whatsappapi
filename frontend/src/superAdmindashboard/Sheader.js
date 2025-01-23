@@ -31,7 +31,6 @@ const Sheader = ({ Getvisitors, getload }) => {
   const handleOpen = () => setOpenmodal(true);
   const handleClose = () => setOpenmodal(false);
   const user = useSelector((state) => state.user);
-  console.log("userfghjkjhgfdghjk", user);
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);
@@ -95,9 +94,12 @@ const Sheader = ({ Getvisitors, getload }) => {
 
     // Fetch user data using token
     const GetUser = async () => {
-      const response = await axios.post("http://127.0.0.1:8090/api/getuser", {
-        token: cookies.token,
-      });
+      const response = await axios.post(
+        "http://192.168.1.27:8090/api/getuser",
+        {
+          token: cookies.token,
+        }
+      );
 
       const getuserData = response.data;
 
@@ -111,7 +113,6 @@ const Sheader = ({ Getvisitors, getload }) => {
       }
 
       dispatch(setUser(getuserData.data));
-      console.log("userdata", getuserData.data.role);
     };
 
     GetUser();
@@ -151,7 +152,6 @@ const Sheader = ({ Getvisitors, getload }) => {
       content: "Visitor Added successfully",
     });
   };
-  console.log("usersss", user);
 
   return (
     <div
