@@ -106,7 +106,7 @@ const Header = ({ Getvisitors, getload }) => {
       >
         <header className="flex justify-between items-center mx-2">
           {/* Logo Section */}
-          <div className=" w-44 h-16">
+          <div className="w-44 h-16">
             <Link to="/">
               <img
                 src={logo}

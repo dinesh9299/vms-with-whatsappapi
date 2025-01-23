@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollnone {
+  overflow: scroll; /* Ensures the content is scrollable */
+  scrollbar-width: none; /* Firefox specific rule to hide the scrollbar */
+}
+
 /* Remove focus outline and hover border for Ant Design Select */
 .ant-select-selector {
   @apply border-transparent focus:outline-none focus:ring-0 hover:border-transparent;

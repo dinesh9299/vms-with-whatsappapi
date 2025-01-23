@@ -46,6 +46,15 @@ async function RegisterEmployee(req, res) {
       });
     }
 
+    const user1 = await employeeModel.findOne({ name });
+    if (user1) {
+      return res.json({
+        message: "employee with name already exist",
+        success: false,
+        error: true,
+      });
+    }
+
     const newemployee = {
       name,
       email,

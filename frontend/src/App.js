@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div>
-      <div>
+      <div className="scrollnone h-screen">
         <Outlet />
       </div>
     </div>

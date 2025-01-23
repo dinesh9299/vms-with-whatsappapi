@@ -175,6 +175,14 @@ const Addemployee = ({ handleClose, Getemployees, updated }) => {
           setSaveloader(false);
         }
 
+        if (responseData.message === "employee with name already exist") {
+          messageApi.open({
+            type: "warning",
+            content: "employee with name already exist",
+          });
+          setSaveloader(false);
+        }
+
         if (responseData.success) {
           // alert("Employee created successfully!");
           // messageApi.open({

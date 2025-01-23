@@ -26,10 +26,14 @@ const Getuserbyprimary = require("../controller/getuserbyid");
 const Edituser = require("../controller/Edituser");
 const Deleteuserbyid = require("../controller/deleteuserbyid");
 const Deleteuserbyprimary = require("../controller/Deleteuserbyprimary");
+const Whatsappapi = require("../controller/whatsappapi");
+const WhatsappEmp = require("../controller/whatsapp_emp_notification");
+const Ledcum = require("../controller/whatsappledcum");
 
 const router = express.Router();
 
 router.post("/register", UserSignup);
+
 router.post("/login", USersign);
 
 router.post("/getuser", userDetailsController);
@@ -93,5 +97,14 @@ router.delete("/deleteuserbyid/:id", Deleteuserbyid);
 
 //Delete User by primary
 router.get("/deleteuserbyprimary/:id", Deleteuserbyprimary);
+
+//whatsapp api
+router.post("/whatsppapi", Whatsappapi);
+
+//whatsappemp
+router.post("/whatsappempnot", WhatsappEmp);
+
+//ledcum
+router.post("/ledcum", Ledcum);
 
 module.exports = router;

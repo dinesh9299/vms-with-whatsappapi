@@ -17,7 +17,6 @@ const Visitorschema = mongoose.Schema(
     createdby: String,
     signature: String,
   },
-
   {
     timestamps: true,
   }

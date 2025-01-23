@@ -38,7 +38,7 @@ const AssignRoleToEmp = ({ handleClose, GetEmployee, query, updated }) => {
             empid: employeeData.empid || "",
             position: employeeData.position || "",
             role: "",
-            password: "",
+            password: "", 
             primaryid: employeeData._id || "",
           });
         } else {

@@ -256,7 +256,7 @@ const Shome = () => {
   }, []);
 
   return (
-    <div className=" overflow-x-hidden">
+    <div className="  overflow-x-hidden">
       {contextHolder}
       <Sheader Getvisitors={getvisitors} getload={handleUserAdded} />
       <div className="h-full w-full lg:px-24 md:px-2 sm:px-2 mb-16 mt-28">

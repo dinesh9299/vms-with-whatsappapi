@@ -14,7 +14,7 @@ async function Updatecheckin(req, res) {
     // Update the visitor with the new checkin time and set checkin to true
     const result = await visitorModel.updateOne(
       { _id: visitorId }, // Find visitor by ID
-      {
+      { 
         $set: {
           checkinTime: new Date(), // Set checkinTime to the current time
           checkin: true,

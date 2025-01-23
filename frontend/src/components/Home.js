@@ -45,26 +45,6 @@ const Home = () => {
     setReloadVisitors((prev) => !prev);
   };
 
-  // Use effect to prevent body scroll when modal is open and to handle width adjustments
-  // useEffect(() => {
-  //   if (isModalOpen) {
-  //     // Add padding-right to prevent layout shift
-  //     document.body.style.overflow = "hidden"; // Prevent body from scrolling
-  //     const scrollbarWidth =
-  //       window.innerWidth - document.documentElement.clientWidth;
-  //     document.body.style.paddingRight = `${scrollbarWidth}px`; // Add space for scrollbar
-  //   } else {
-  //     document.body.style.overflow = "auto"; // Restore scrolling
-  //     document.body.style.paddingRight = "0px"; // Reset padding-right
-  //   }
-
-  //   // Clean up by restoring scroll and padding when modal is closed
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //     document.body.style.paddingRight = "0px";
-  //   };
-  // }, [isModalOpen]);
-
   useEffect(() => {
     // If no token, redirect to signin
     if (!cookies.token) {
@@ -105,11 +85,6 @@ const Home = () => {
   useEffect(() => {
     getvisitors();
   }, []);
-
-  // Filter pending users that haven't checked in or out
-  // const pendingusers = visitors?.filter(
-  //   (pvisitor) => !pvisitor.checkin || !pvisitor.checkout
-  // );
 
   // Memoize the filtered search results to optimize performance
   const filteredVisitors = useMemo(() => {
